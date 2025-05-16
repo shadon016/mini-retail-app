@@ -7,9 +7,11 @@ const navItem = [
 ];
 const Sidenav = () => {
   return (
-    <div className="sticky top-16 left-0 w-full shadow-2xl bg-slate-50">
+    <div className="sticky top-20 left-0 w-full shadow-2xl bg-slate-900">
       {navItem?.map((item) => (
-        <div key={item.id}>{item.name}</div>
+        <div key={item.id}>
+          <p className="text-center py-4">{item.name}</p>
+        </div>
       ))}
     </div>
   );
