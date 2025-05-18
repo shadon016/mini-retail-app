@@ -1,12 +1,13 @@
 import React from "react";
 import Link from "next/link";
+import { registerAction } from "@/actions";
 
 const Page = () => {
   return (
     <div className="h-screen flex justify-center items-center">
       <div className="bg-pink-400 p-6">
         <h1>Sign up</h1>
-        <form className="">
+        <form className="" action={registerAction}>
           <div className="flex flex-col">
             <label htmlFor="email">Email:</label>
             <input type="email" id="email" name="email" required />
