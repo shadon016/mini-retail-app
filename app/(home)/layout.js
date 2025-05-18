@@ -1,6 +1,6 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
-import Nav from "./_components/nav.jsx";
+import Sidenav from "./_components/sidenav.jsx";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -21,10 +21,12 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased flex gap-6 my-6 px-12`}
       >
-        {/* <Nav /> */}
-        {children}
+        <div className="flex-1/4">
+          <Sidenav />
+        </div>
+        <div className="flex-3/4">{children}</div>
       </body>
     </html>
   );
