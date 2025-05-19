@@ -20,10 +20,16 @@ const Sidenav = async () => {
     <>
       <div className="sticky top-2 left-0 w-full shadow-2xl bg-slate-900">
         {auth ? (
-          <div className="flex flex-col items-center gap-4">
+          <div className="flex flex-col items-center gap-4 py-4">
             <p>{loggedUser?.username}</p>
             <Link href="/profile">
               <p>profile</p>
+            </Link>
+            <Link href="/cart">
+              <p>cart</p>
+            </Link>
+            <Link href="/orders">
+              <p>orders</p>
             </Link>
           </div>
         ) : (
