@@ -1,22 +1,13 @@
 import React from "react";
 import Link from "next/link";
-
+import { loginAction } from "@/actions";
+import LoginForm from "../_components/loginForm";
 const Page = () => {
   return (
     <div className="flex items-center justify-center min-h-screen">
-      <div className="bg-red-400 p-6">
+      <div className="bg-purple-800 p-6">
         <h1>Sign In</h1>
-        <form className="flex flex-col gap-6">
-          <div className="flex flex-col gap-2">
-            <label htmlFor="email">Email:</label>
-            <input type="email" id="email" name="email" required />
-          </div>
-          <div className="flex flex-col gap-2">
-            <label htmlFor="password">Password:</label>
-            <input type="password" id="password" name="password" required />
-          </div>
-          <button type="submit">Sign In</button>
-        </form>
+        <LoginForm />
         <p>
           Dont have an account? <Link href="/signup">Sign up</Link>
         </p>

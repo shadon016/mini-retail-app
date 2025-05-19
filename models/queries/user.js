@@ -11,4 +11,12 @@ const createUser = async (userInfo) => {
   }
 };
 
-export { createUser };
+const findUser = async (userEmail) => {
+  try {
+    await User.findOne({ email: userEmail });
+  } catch (error) {
+    console.log(error);
+    return new Error(error);
+  }
+};
+export { createUser, findUser };
