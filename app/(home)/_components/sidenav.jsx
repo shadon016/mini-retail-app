@@ -14,7 +14,7 @@ const Sidenav = async () => {
   const userid = await cookieStore.get("userId")?.value;
 
   const loggedUser = await getLoggedInUser(userid);
-
+  console.log(loggedUser);
   const auth = isloggedInUser?.value === "true" ? true : false;
   return (
     <>
