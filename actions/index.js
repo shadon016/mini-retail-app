@@ -3,6 +3,7 @@ import { createUser, findUser } from "@/models/queries/user.js";
 import { User } from "@/models/schemas/userSchema.js";
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
+import { cookies } from "next/headers";
 
 export const registerAction = async (formData) => {
   const email = formData.get("email");
@@ -30,6 +31,17 @@ export const loginAction = async (formData) => {
   if (!isMatch) {
     return { status: 401, message: "wrong password" };
   } else {
+    const cookieStore = await cookies();
+
+    cookieStore.set("isLoggedIn", true);
+    cookieStore.set("userId", user?._id);
     return { status: 200, message: "login successful" };
   }
+};
+
+export const logoutAction = async () => {
+  const cookieStore = await cookies();
+  cookieStore.delete("isLoggedIn");
+  cookieStore.delete("userId", null);
+  redirect("/signin");
 };

@@ -19,4 +19,15 @@ const findUser = async (userEmail) => {
     return new Error(error);
   }
 };
-export { createUser, findUser };
+
+const getLoggedInUser = async (userId) => {
+  try {
+    const user = await User.findById({ _id: userId }, { password: 0 });
+    return user;
+  } catch (error) {
+    console.log(error);
+    return new Error(error);
+  }
+};
+
+export { createUser, findUser, getLoggedInUser };
