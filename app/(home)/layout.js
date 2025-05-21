@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "../globals.css";
 import Sidenav from "./_components/sidenav.jsx";
 import dbConnect from "@/services/mongo";
+import ContextProvider from "../../context/providers/ContextProvider.jsx";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,10 +26,12 @@ export default async function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased flex gap-6 my-6 px-12`}
       >
-        <div className="flex-1/4">
-          <Sidenav />
-        </div>
-        <div className="flex-3/4">{children}</div>
+        <ContextProvider>
+          <div className="flex-1/4">
+            <Sidenav />
+          </div>
+          <div className="flex-3/4">{children}</div>
+        </ContextProvider>
       </body>
     </html>
   );
