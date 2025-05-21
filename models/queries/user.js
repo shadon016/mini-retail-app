@@ -22,6 +22,9 @@ const findUser = async (userEmail) => {
 
 const getLoggedInUser = async (userId) => {
   try {
+    if (!userId) {
+      return null;
+    }
     const user = await User.findById({ _id: userId }, { password: 0 });
     return user;
   } catch (error) {
