@@ -2,19 +2,15 @@
 
 import React, { useContext } from "react";
 import { cartContext } from "../../../../context/cartContext.js";
-const CartItem = () => {
+
+const CartLength = () => {
   const { cart } = useContext(cartContext);
+  const cartLength = cart.length;
   return (
     <div>
-      {cart.map((c) => (
-        <div key={c.id}>
-          <p>
-            {c.title} {c?.quantity}
-          </p>
-        </div>
-      ))}
+      <p>{cartLength}</p>
     </div>
   );
 };
 
-export default CartItem;
+export default CartLength;

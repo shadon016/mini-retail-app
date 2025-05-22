@@ -1,17 +1,29 @@
 "use client";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { cartContext } from "../../../../context/cartContext.js";
 
-const AddButton = ({ isLoggedIn }) => {
-  const { setCart } = useContext(cartContext);
+const AddButton = ({ isLoggedIn, product }) => {
+  const [quantity, setQuantity] = useState(1);
+  const { cart, setCart } = useContext(cartContext);
+
+  const handleAddToCart = () => {
+    const existingProduct = cart.find((item) => item.id === product.id);
+    if (existingProduct) {
+      setCart(
+        cart.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity + quantity }
+            : item
+        )
+      );
+    } else {
+      setCart([...cart, { ...product, quantity }]);
+    }
+  };
   return (
     <div>
       <button
-        onClick={() => {
-          if (isLoggedIn) {
-            setCart((prev) => [...prev, "Product"]);
-          }
-        }}
+        onClick={handleAddToCart}
         disabled={!isLoggedIn}
         className={
           !isLoggedIn

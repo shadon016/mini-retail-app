@@ -2,6 +2,7 @@ import React from "react";
 import Info from "./info.jsx";
 import Link from "next/link";
 import Logout from "./logout.jsx";
+import CartLength from "../cart/_components/cartLength.jsx";
 import { cookies } from "next/headers";
 import { getLoggedInUser } from "@/models/queries/user.js";
 
@@ -40,7 +41,7 @@ const Sidenav = async () => {
         )}
         <div className="flex justify-center py-4">
           <Link href="/cart">
-            <p>cart</p>
+            cart <CartLength />
           </Link>
         </div>
         {auth && (

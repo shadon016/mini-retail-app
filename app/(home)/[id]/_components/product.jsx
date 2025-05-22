@@ -2,7 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { cookies } from "next/headers";
 import AddButton from "./addButton.jsx";
-const Product = async () => {
+
+const Product = async ({ product }) => {
   const cookieStore = await cookies();
 
   const isLoggedIn = await cookieStore.get("userId");
@@ -13,10 +14,10 @@ const Product = async () => {
         <Image src="/product.jpg" height={100} width={100} alt="img" />
       </div>
       <div>
-        <h1 className="text-2xl font-bold">products</h1>
-        <p className="text-gray-700">Product Description</p>
-        <p className="text-lg font-semibold">$99.99</p>
-        <AddButton isLoggedIn={isLoggedIn} />
+        <h1 className="text-2xl font-bold">{product?.title}</h1>
+        <p className="text-gray-700">{product?.description}</p>
+        <p className="text-lg font-semibold">${product?.price}</p>
+        <AddButton isLoggedIn={isLoggedIn} product={product} />
       </div>
     </>
   );
