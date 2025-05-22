@@ -13,7 +13,7 @@ const Product = async () => {
         <Image src="/product.jpg" height={100} width={100} alt="img" />
       </div>
       <div>
-        <h1 className="text-2xl font-bold">Product Name</h1>
+        <h1 className="text-2xl font-bold">products</h1>
         <p className="text-gray-700">Product Description</p>
         <p className="text-lg font-semibold">$99.99</p>
         <AddButton isLoggedIn={isLoggedIn} />
