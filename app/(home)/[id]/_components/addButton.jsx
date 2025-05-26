@@ -25,6 +25,7 @@ const AddButton = ({ isLoggedIn, product }) => {
       <button
         onClick={handleAddToCart}
         disabled={!isLoggedIn}
+        title={isLoggedIn ? "Add to Cart" : "Please login"}
         className={
           !isLoggedIn
             ? "bg-gray-400 cursor-progress"

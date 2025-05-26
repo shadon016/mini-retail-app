@@ -52,6 +52,7 @@ const CartItem = () => {
       {cart.length > 0 && (
         <div>
           <p>Total Price: ${totalPrice.toFixed(2)}</p>
+          <button>checkout</button>
         </div>
       )}
     </>
