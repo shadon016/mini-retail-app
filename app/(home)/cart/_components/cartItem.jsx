@@ -3,6 +3,8 @@
 import React, { useContext } from "react";
 import { cartContext } from "../../../../context/cartContext.js";
 import Action from "./action.jsx";
+import Link from "next/link";
+
 const CartItem = () => {
   const { cart, setCart } = useContext(cartContext);
   const totalPrice = cart.reduce(
@@ -52,7 +54,7 @@ const CartItem = () => {
       {cart.length > 0 && (
         <div>
           <p>Total Price: ${totalPrice.toFixed(2)}</p>
-          <button>checkout</button>
+          <Link href="/payment">checkout</Link>
         </div>
       )}
     </>
