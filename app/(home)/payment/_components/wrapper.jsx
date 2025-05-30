@@ -17,7 +17,7 @@ const Wrapper = ({ children, user }) => {
         <CartInfo cart={cart} />
       </div>
       <div className="flex-1">
-        <PaymentForm totalPrice={totalPrice} user={user} />
+        <PaymentForm totalPrice={totalPrice} user={user} cart={cart} />
       </div>
     </div>
   );

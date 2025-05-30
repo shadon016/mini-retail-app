@@ -1,6 +1,8 @@
 "use server";
 import { createUser, findUser } from "@/models/queries/user.js";
+
 import { User } from "@/models/schemas/userSchema.js";
+import { Order } from "@/models/schemas/orderSchema.js";
 import { redirect } from "next/navigation";
 import bcrypt from "bcryptjs";
 import { cookies } from "next/headers";
@@ -44,4 +46,25 @@ export const logoutAction = async () => {
   cookieStore.delete("isLoggedIn");
   cookieStore.delete("userId", null);
   redirect("/signin");
+};
+
+export const orderAction = async (totalPrice, cart, formData) => {
+  const address = formData.get("address");
+
+  const cookieStore = await cookies();
+  const user = cookieStore.get("userId")?.value;
+  const order = {
+    userId: user,
+    address,
+    products: cart,
+    totalPrice,
+    status: "pending",
+    paymentStatus: "paid",
+  };
+
+  // Here you would typically save the order to the database
+  // For example:
+  await Order.create(order);
+
+  return { status: 200, message: "Order placed successfully", order };
 };
