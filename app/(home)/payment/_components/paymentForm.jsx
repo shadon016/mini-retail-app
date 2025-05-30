@@ -1,13 +1,22 @@
 import React from "react";
-import { orderAction } from "../../../../actions/index.js";
+import { orderAction } from "@/actions/index.js";
+import { useRouter } from "next/navigation";
 
-const PaymentForm = ({ totalPrice, user, cart }) => {
+const PaymentForm = ({ totalPrice, user, cart, setCart }) => {
+  const router = useRouter();
   const parsedUser = JSON.parse(user);
 
   async function handleSubmit(event) {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
-    await orderAction(totalPrice, cart, formData);
+    const res = await orderAction(totalPrice, cart, formData);
+
+    if (res.status === 200) {
+      router.push("/orders");
+    }
+    setTimeout(() => {
+      setCart([]);
+    }, 1000);
   }
 
   return (

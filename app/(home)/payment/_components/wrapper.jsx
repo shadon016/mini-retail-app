@@ -5,7 +5,7 @@ import CartInfo from "./cartInfo.jsx";
 import PaymentForm from "./paymentForm.jsx";
 
 const Wrapper = ({ children, user }) => {
-  const { cart } = useContext(cartContext);
+  const { cart, setCart } = useContext(cartContext);
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
@@ -17,7 +17,12 @@ const Wrapper = ({ children, user }) => {
         <CartInfo cart={cart} />
       </div>
       <div className="flex-1">
-        <PaymentForm totalPrice={totalPrice} user={user} cart={cart} />
+        <PaymentForm
+          totalPrice={totalPrice}
+          user={user}
+          cart={cart}
+          setCart={setCart}
+        />
       </div>
     </div>
   );
