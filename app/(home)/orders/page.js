@@ -19,12 +19,14 @@ const Page = async () => {
           <div key={order._id} className="border p-4 mb-4">
             {order?.products?.map((product) => (
               <div key={product?.id} className="">
-                <p>{product.title}</p>
-                <p>Quantity: {product.quantity}</p>
-                <p>Price: {product.price}</p>
+                <p>
+                  {product.title} x {product.quantity} ${product.price}
+                </p>
               </div>
             ))}
-            <p>{order?.totalPrice}</p>
+            <p>total : ${order?.totalPrice}</p>
+            <p>{new Date(order?.createdAt).toLocaleDateString()}</p>
+            <p>Status: {order?.status}</p>
           </div>
         ))}
       </div>
