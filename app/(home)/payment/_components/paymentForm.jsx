@@ -1,9 +1,28 @@
 import React from "react";
 
-const PaymentForm = () => {
+const PaymentForm = ({ totalPrice, user }) => {
+  const parsedUser = JSON.parse(user);
+  console.log("Parsed User:", parsedUser);
   return (
     <div>
       <form>
+        <div className="mb-4">
+          <label
+            htmlFor="userName"
+            className="block text-sm font-medium text-gray-700"
+          >
+            userName
+          </label>
+          <input
+            type="text"
+            id="userName"
+            name="userName"
+            value={parsedUser?.username}
+            readOnly
+            required
+            className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+          />
+        </div>
         <div className="mb-4">
           <label
             htmlFor="cardNumber"
@@ -57,7 +76,7 @@ const PaymentForm = () => {
           type="submit"
           className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
         >
-          Pay Now
+          Pay Now ${totalPrice.toFixed(2)}
         </button>
       </form>
     </div>

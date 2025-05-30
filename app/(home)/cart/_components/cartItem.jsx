@@ -1,16 +1,18 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { cartContext } from "../../../../context/cartContext.js";
 import Action from "./action.jsx";
 import Link from "next/link";
 
 const CartItem = () => {
   const { cart, setCart } = useContext(cartContext);
-  const totalPrice = cart.reduce(
+
+  const totalPrice = cart?.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
   );
+
   const handleRemove = (id) => {
     const updateCart = cart.filter((item) => item.id !== id);
     setCart(updateCart);
@@ -33,6 +35,7 @@ const CartItem = () => {
     });
     setCart(updateCart);
   };
+
   return (
     <>
       <div>
@@ -53,7 +56,7 @@ const CartItem = () => {
       </div>
       {cart.length > 0 && (
         <div>
-          <p>Total Price: ${totalPrice.toFixed(2)}</p>
+          <p>Total Price: ${totalPrice?.toFixed(2)}</p>
           <Link href="/payment">checkout</Link>
         </div>
       )}
