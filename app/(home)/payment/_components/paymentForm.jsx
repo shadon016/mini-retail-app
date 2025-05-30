@@ -16,7 +16,7 @@ const PaymentForm = ({ totalPrice, user, cart, setCart }) => {
     }
     setTimeout(() => {
       setCart([]);
-    }, 1000);
+    }, 2000);
   }
 
   return (
